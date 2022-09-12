@@ -3,7 +3,8 @@ import { Link } from 'react-router-dom';
 import styles from './Button.module.scss';
 
 const cx = classNames.bind(styles);
-function Button({ to, href, primary, outline, textType, children, onClick, ...passProps }) {
+
+function Button({ to, href, lefticon, primary, outline, rounded, textType, children, onClick, ...passProps }) {
     let Comp = 'button';
     const props = {
         onClick,
@@ -21,9 +22,12 @@ function Button({ to, href, primary, outline, textType, children, onClick, ...pa
         primary,
         outline,
         textType,
+        rounded,
+        ...passProps,
     });
     return (
         <Comp className={classes} {...props}>
+            {lefticon}
             <span>{children}</span>
         </Comp>
     );

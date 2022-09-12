@@ -8,8 +8,32 @@ import Tippy from '@tippyjs/react/headless';
 import { Wrapper as PopperWrapper } from '~/components/Layout/Popper';
 import AccountItem from '../../Popper/AccountItem';
 import Button from '~/components/Button';
+import Menu from '../../Popper/Menu';
 
 const cx = classNames.bind(styles);
+
+const Menu_Items = [
+    {
+        icon: <img src={images.language} alt="Language" />,
+        title: '日本語',
+        children: {
+            title: '言語',
+            data: [
+                { code: 'en', title: '英語' },
+                { code: 'vi', title: 'ベトナム語' },
+            ],
+        },
+    },
+    {
+        icon: <img src={images.feedback} alt="Feedback" />,
+        title: 'フィードバックとヘルプ',
+        to: '/feedback',
+    },
+    {
+        icon: <img src={images.keyboard} alt="Keyboard" />,
+        title: 'キーボードショートカット',
+    },
+];
 
 function Header() {
     const [searchResult, setSearchResult] = useState([]);
@@ -28,7 +52,7 @@ function Header() {
                 </div>
                 <Tippy
                     interactive
-                    visible={searchResult.length > 0}
+                    visible={searchResult.length > 3}
                     render={(attrs) => (
                         <div className={cx('search-results')} tabIndex="-1" {...attrs}>
                             <PopperWrapper>
@@ -65,8 +89,15 @@ function Header() {
                     </div>
                 </Tippy>
                 <div className={cx('actions')}>
-                    <Button textType>アップロード</Button>
+                    <Button textType lefticon={<img className={cx('plus-icon')} src={images.plus} alt="plusicon" />}>
+                        アップロード
+                    </Button>
                     <Button primary>ログイン</Button>
+                    <Menu items={Menu_Items}>
+                        <button className={cx('more-btn')}>
+                            <img className={cx('plus-icon')} src={images.elipsisVertical} alt="more-btn" />
+                        </button>
+                    </Menu>
                 </div>
             </div>
         </header>

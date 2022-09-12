@@ -16,9 +16,9 @@
     display: flex;
     align-items: center;
     justify-content: space-between;
+    padding: 0 var(--default-layout-horizontal-space);
 }
-.logo {
-}
+
 .search,
 .search-results {
     width: 361px;
@@ -91,4 +91,28 @@
 }
 svg {
     fill: rgba(22, 24, 35, 0.34);
+}
+.plus-icon {
+    height: 20px;
+    width: 20px;
+    margin-right: 8px;
+}
+.actions {
+    display: flex;
+}
+.more-btn {
+    margin-left: 16px;
+    cursor: pointer;
+    font-style: normal;
+    padding: 0 4px;
+    background-color: transparent;
+}
+.plus-icon {
+    width: 20px;
+    height: 20px;
+}
+
+//Menu Items
+
+.menu-item {
 }
